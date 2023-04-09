@@ -25,6 +25,6 @@
   },
   "homepage": "https://github.com/github-developer/javascript-action#readme",
   "dependencies": {
-    "@actions/core": "^1.2.5"
+    "@actions/core": "^1.10.0"
   }
 }
