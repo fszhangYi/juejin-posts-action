@@ -1,11 +1,12 @@
 import fs from 'fs';
+import path from 'path';
 import util from 'util';
 import core from '@actions/core';
-import process from 'child_process';
+import childProcess from 'child_process';
 
 import { JSDOM } from 'jsdom';
 
-const exec = util.promisify(process.exec);
+const exec = util.promisify(childProcess.exec);
 
 // 读取参数: 掘金用户 ID
 const USER_ID = core.getInput('user_id');
@@ -26,7 +27,7 @@ try {
     }, '');
 
   core.info('4. Waiting 读取 README ...');
-  const README_PATH = new URL('../README.md', import.meta.url);
+  const README_PATH = path.resolve(process.cwd(), './README.md');
 
   core.info('5. 去 README 内容, 在 <!-- posts start --> 和 <!-- posts end --> 中间插入生成的 html ...');
   const res = fs.readFileSync(README_PATH, 'utf-8')
