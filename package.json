@@ -2,10 +2,9 @@
   "name": "javascript-action",
   "version": "1.0.0",
   "description": "JavaScript Action Template",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "type": "module",
   "scripts": {
-    "prepare": "ncc build lib/index.js -o dist --minify",
     "test": "jest",
     "all": "npm run lint && npm run prepare && npm run test"
   },

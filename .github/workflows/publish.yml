@@ -6,20 +6,21 @@ name: Publish
 # Manual or automatic release
 on:
   release:
-    types: [published, edited]
+    types: [published]
 
 jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      # Release with semantic tag like v1.0.3
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.release.tag_name }}
-          
-      - name: Setup Node
-        uses: actions/setup-node@v2
+      # step 1. 获取源码
+      - name: Chekcout 🛎️             # 步骤名
+        uses: actions/checkout@master # 使用插件名 => https://github.com/actions/checkout
+
+      # step 2. 安装指定 node
+      - name: Use Node  📦              # 步骤名
+        uses: actions/setup-node@master # 使用插件名 => https://github.com/actions/setup-node
+        with: # 插件携带参数
+          node-version: '18' # 指定 node 版本
 
       # Compile dist/index.js and bundle with action.yml
       # Force push major and minor tags, e.g. v1, v1.0

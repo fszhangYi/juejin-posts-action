@@ -1,5 +1,6 @@
 # Dependencies
 node_modules/
+.DS_Store
 
 # Compiled project files
 dist/
