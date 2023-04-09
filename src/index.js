@@ -34,8 +34,11 @@ try {
 
   core.info('6. 修改 README ...');
   fs.writeFileSync(README_PATH, res);
+
+  core.info(`res: ${fs.readFileSync(README_PATH, 'utf-8')}`);
 } catch (error) {
   core.setFailed(error);
 }
+
 // 设置输出给下一个步骤的参数
 // core.setOutput('time', new Date().toTimeString());
