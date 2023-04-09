@@ -25,7 +25,7 @@ try {
       return `${total}\n<li>[${data}] <a href="https://juejin.cn${link?.getAttribute('href')}">${link?.textContent}</a></li>`;
     }, '');
 
-  core.info('4. 修改 README: 在 <!-- posts start --> 和 <!-- posts end --> 中间插入生成的 html ...');
+  core.info(`4. 修改 README, 在 <!-- posts start --> 和 <!-- posts end --> 中间插入生成的 html: \n ${htmlText}`);
   const README_PATH = './README.md';
   const res = fs.readFileSync(README_PATH, 'utf-8')
     .replace(/(?<=<!-- posts start -->)[.\s\S]*?(?=<!-- posts end -->)/, `\n<ul>${htmlText}\n</ul>\n`);
