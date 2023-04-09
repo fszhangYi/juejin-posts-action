@@ -1,9 +1,10 @@
 name: Keep the versions up-to-date
 
 on:
-  release:
-    types: [published, edited]
-
+  push:
+    branches: 
+      - main  
+  
 jobs:
   actions-tagger:
     runs-on: windows-latest
