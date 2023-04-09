@@ -1,5 +1,5 @@
 import fs from 'fs';
-import path from 'path';
+// import path from 'path';
 import util from 'util';
 import core from '@actions/core';
 import childProcess from 'child_process';
@@ -27,8 +27,8 @@ try {
     }, '');
 
   core.info('4. Waiting 获取 目录 README 路径 ...');
-  const { stdout: pwd } = await exec('pwd');
-  const README_PATH = path.resolve(pwd, './README.md');
+  // const { stdout: pwd } = await exec('pwd');
+  const README_PATH = './README.md';
 
   core.info(`5. 去 ${README_PATH} 内容, 在 <!-- posts start --> 和 <!-- posts end --> 中间插入生成的 html ...`);
   const res = fs.readFileSync(README_PATH, 'utf-8')
