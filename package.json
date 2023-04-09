@@ -5,10 +5,10 @@
   "main": "lib/index.js",
   "type": "module",
   "scripts": {
-    "build": "ncc build src/main.ts --minify --out lib",
-    "cz": "klx-cz",
+    "build": "ncc build src/index.js --minify --out lib",
+    "cz": "npm run build && klx-cz",
     "release": "klx-release",
-    "prepare": "husky install && npm run build"
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,8 @@
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.10.0",
-    "@vercel/ncc": "^0.36.1"
+    "@vercel/ncc": "^0.36.1",
+    "jsdom": "^21.1.1"
   },
   "devDependencies": {
     "@kunlunxu/norm": "^2.8.1"
