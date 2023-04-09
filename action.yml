@@ -1,13 +1,18 @@
-name: 'Wait'
-description: 'Wait a designated number of milliseconds'
+# see: https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions
+name: 'Render Juejin Posts in Readme'
+description: 'Render Juejin Posts in Readme'
+
+# 定义当前步骤参数
 inputs:
-  milliseconds:  # id of input
-    description: 'number of milliseconds to wait'
+  user_id:
+    description: 掘金用户 ID
     required: true
-    default: '1000'
-outputs:
-  time: # output will be available to future steps
-    description: 'The message to output'
+    default: ''
+
+# 向下一个步骤输出参数
+# outputs:
+#   time: # output will be available to future steps
+#     description: 'The message to output'
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: 'node18'
+  main: 'lib/index.js'
