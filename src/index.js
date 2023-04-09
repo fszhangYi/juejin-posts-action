@@ -26,7 +26,7 @@ try {
     }, '');
 
   core.info('4. Waiting 读取 README ...');
-  const README_PATH = new URL('./README.md', import.meta.url);
+  const README_PATH = new URL('../README.md', import.meta.url);
 
   core.info('5. 去 README 内容, 在 <!-- posts start --> 和 <!-- posts end --> 中间插入生成的 html ...');
   const res = fs.readFileSync(README_PATH, 'utf-8')
