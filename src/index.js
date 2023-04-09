@@ -35,7 +35,8 @@ try {
 
   core.info('6. 修改 README ...');
   fs.writeFileSync(README_PATH, res);
-
+  const { stdout } = await exec('pwd');
+  core.info(stdout);
   core.info(`res: ${fs.readFileSync(README_PATH, 'utf-8')}`);
 } catch (error) {
   core.setFailed(error);
