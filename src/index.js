@@ -26,17 +26,17 @@ try {
       return `${total}\n<li>[${data}] <a href="https://juejin.cn${link?.getAttribute('href')}">${link?.textContent}</a></li>`;
     }, '');
 
-  core.info('4. Waiting 读取 README ...');
-  const README_PATH = path.resolve(process.cwd(), './README.md');
+  core.info('4. Waiting 获取 目录 README 路径 ...');
+  const { stdout: pwd } = await exec('pwd');
+  const README_PATH = path.resolve(pwd, './README.md');
 
-  core.info('5. 去 README 内容, 在 <!-- posts start --> 和 <!-- posts end --> 中间插入生成的 html ...');
+  core.info(`5. 去 ${README_PATH} 内容, 在 <!-- posts start --> 和 <!-- posts end --> 中间插入生成的 html ...`);
   const res = fs.readFileSync(README_PATH, 'utf-8')
     .replace(/(?<=<!-- posts start -->)[.\s\S]*?(?=<!-- posts end -->)/, `\n<ul>${htmlText}\n</ul>\n`);
 
   core.info('6. 修改 README ...');
   fs.writeFileSync(README_PATH, res);
-  const { stdout } = await exec('pwd');
-  core.info(stdout);
+
   core.info(`res: ${fs.readFileSync(README_PATH, 'utf-8')}`);
 } catch (error) {
   core.setFailed(error);
