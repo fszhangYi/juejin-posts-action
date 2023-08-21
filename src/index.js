@@ -22,14 +22,14 @@ try {
     .reduce((total, ele) => {
       const data = ele.querySelector('.meta-container .date')?.textContent;
       const link = ele.querySelector('.content-wrapper .title-row a.title');
-      return `${total}\n<li>[${data}] <a href="https://juejin.cn${link?.getAttribute('href')}">${link?.textContent}</a></li>`;
+      return `${total}\n<div><a href="https://juejin.cn${link?.getAttribute('href')}">${link?.textContent}</a></div>`;
     }, '');
-  const appendHtml = `\n<ul>${reduceText}\n</ul>\n`;
+  const appendHtml = `\n<div style="margin-top:15px">${reduceText}\n</div>\n`;
 
   core.info(`4. 修改 README, 在 <!-- posts start --> 和 <!-- posts end --> 中间插入生成的 html: \n ${appendHtml}`);
   const README_PATH = './README.md';
   const res = fs.readFileSync(README_PATH, 'utf-8')
-    .replace(/(?<=<!-- posts start -->)[.\s\S]*?(?=<!-- posts end -->)/, `\n<ul>${appendHtml}\n</ul>\n`);
+    .replace(/(?<=<!-- posts start -->)[.\s\S]*?(?=<!-- posts end -->)/, `\n${appendHtml}\n\n`);
 
   core.info('5. 修改 README ...');
   fs.writeFileSync(README_PATH, res);
